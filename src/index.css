@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -127,58 +127,25 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-orbitron;
+    @apply font-rajdhani;
   }
 }
 
 @layer components {
-  /* Gaming Button Variants */
   .btn-gaming {
-    @apply relative overflow-hidden bg-gradient-to-r from-primary to-primary-glow text-primary-foreground font-orbitron font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-neon)] border border-primary/30;
+    @apply relative overflow-hidden bg-gradient-to-r from-primary to-primary-glow text-primary-foreground font-rajdhani font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-neon)] border border-primary/30;
   }
 
   .btn-gaming-secondary {
-    @apply relative overflow-hidden bg-gradient-to-r from-secondary to-secondary-glow text-secondary-foreground font-orbitron font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-neon-secondary)] border border-secondary/30;
+    @apply relative overflow-hidden bg-gradient-to-r from-secondary to-secondary-glow text-secondary-foreground font-rajdhani font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-neon-secondary)] border border-secondary/30;
   }
 
   .btn-gaming-outline {
-    @apply relative overflow-hidden bg-transparent text-primary border-2 border-primary font-orbitron font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105 hover:shadow-[var(--shadow-neon)];
-  }
-
-  /* Gaming Cards */
-  .card-gaming {
-    @apply bg-gradient-to-br from-card to-muted border border-border/20 rounded-xl backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:shadow-[var(--shadow-card)];
-  }
-
-  /* Neon Text */
-  .text-neon {
-    @apply text-primary drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)];
-  }
-
-  .text-neon-secondary {
-    @apply text-secondary drop-shadow-[0_0_10px_hsl(var(--secondary)/0.5)];
-  }
-
-  .text-neon-accent {
-    @apply text-accent drop-shadow-[0_0_10px_hsl(var(--accent)/0.5)];
-  }
-
-  /* Section Backgrounds */
-  .section-bg {
-    @apply relative overflow-hidden;
-  }
-
-  .section-bg::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 pointer-events-none;
+    @apply relative overflow-hidden bg-transparent text-primary border-2 border-primary font-rajdhani font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105 hover:shadow-[var(--shadow-neon)];
   }
 }
 
 @layer utilities {
-  .font-orbitron {
-    font-family: 'Orbitron', monospace;
-  }
-
   .font-rajdhani {
     font-family: 'Rajdhani', sans-serif;
   }
