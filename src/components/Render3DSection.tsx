@@ -131,8 +131,6 @@ const Render3DSection = () => {
                       title={model.title}
                       frameBorder="0"
                       allowFullScreen
-                      mozAllowFullScreen={true}
-                      webkitAllowFullScreen={true}
                       allow="autoplay; fullscreen; xr-spatial-tracking"
                       xr-spatial-tracking="true"
                       execution-while-out-of-viewport="true"
@@ -177,8 +175,6 @@ const Render3DSection = () => {
                   title="GAZ-69 Soviet four-wheel drive off-road vehicle"
                   frameBorder="0"
                   allowFullScreen
-                  mozAllowFullScreen={true}
-                  webkitAllowFullScreen={true}
                   allow="autoplay; fullscreen; xr-spatial-tracking"
                   xr-spatial-tracking="true"
                   execution-while-out-of-viewport="true"
