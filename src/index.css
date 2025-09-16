@@ -150,3 +150,12 @@
     font-family: 'Rajdhani', sans-serif;
   }
 }
+
+/* Agrega esto si usas CSS personalizado */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}

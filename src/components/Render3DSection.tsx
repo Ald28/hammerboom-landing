@@ -1,8 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Layers, Eye } from 'lucide-react';
 
 const Render3DSection = () => {
+
   const [selectedFeature, setSelectedFeature] = useState<'none' | 'fotorrealista' | 'realtime'>('none');
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+
+    if (selectedFeature === 'fotorrealista' && scrollRef.current) {
+      const container = scrollRef.current;
+
+      container.scrollLeft = 0;
+
+      intervalId = setInterval(() => {
+        if (!container) return;
+
+        container.scrollBy({ left: 1, behavior: 'smooth' });
+
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 0;
+        }
+      }, 10);
+    }
+
+    return () => clearInterval(intervalId);
+  }, [selectedFeature]);
+
 
   const features = [
     {
@@ -21,39 +47,11 @@ const Render3DSection = () => {
     },
   ];
 
-  const fotorrealistaModels = [
-    {
-      title: "Jeep-ish offroad vehicle",
-      author: "✮𝖀𝖓𝖋𝖔𝖗𝖌𝖊𝖙𝖙𝖆𝖇𝖑𝖊 𝕹𝖆𝖒𝖊✮",
-      modelUrl: "https://sketchfab.com/models/b5fb86ce8a244ddc95801c1d43b01612/embed",
-      pageUrl:
-        "https://sketchfab.com/3d-models/jeep-ish-offroad-vehicle-b5fb86ce8a244ddc95801c1d43b01612",
-      authorUrl: "https://sketchfab.com/UnforgettableName",
-    },
-    {
-      title: "2007 Jeep Wrangler Rubicon",
-      author: "Ddiaz Design",
-      modelUrl: "https://sketchfab.com/models/693abb51754b46e28edd06c2c9b6b861/embed",
-      pageUrl:
-        "https://sketchfab.com/3d-models/2007-jeep-wrangler-rubicon-693abb51754b46e28edd06c2c9b6b861",
-      authorUrl: "https://sketchfab.com/ddiaz-design",
-    },
-    {
-      title: "Jeep WW2 Willys MB Monster",
-      author: "valerij1987",
-      modelUrl: "https://sketchfab.com/models/c5cb5d1efd7e46dd9749607c20a846ab/embed",
-      pageUrl:
-        "https://sketchfab.com/3d-models/jeep-ww2-willys-mb-monster-c5cb5d1efd7e46dd9749607c20a846ab",
-      authorUrl: "https://sketchfab.com/valerij1987",
-    },
-    {
-      title: "Jeep car",
-      author: "3Dji",
-      modelUrl: "https://sketchfab.com/models/9f03130a0d2849e6b050130aa3d860f3/embed",
-      pageUrl:
-        "https://sketchfab.com/3d-models/jeep-car-9f03130a0d2849e6b050130aa3d860f3",
-      authorUrl: "https://sketchfab.com/3Dji",
-    },
+  const fotorrealistaImages = [
+    "/portafolio/render/render1.png",
+    "/portafolio/render/render2.png",
+    "/portafolio/render/render3.png",
+    "/portafolio/render/render4.png",
   ];
 
   return (
@@ -121,37 +119,18 @@ const Render3DSection = () => {
           {/* Fotorrealista Section */}
           {selectedFeature === 'fotorrealista' && (
             <>
-              <div className="flex overflow-x-auto space-x-6 pb-4 mb-16">
-                {fotorrealistaModels.map((model, i) => (
+              <div className="flex overflow-x-auto space-x-6 pb-4 mb-16 scrollbar-hide"
+                ref={scrollRef}>
+                {[...fotorrealistaImages, ...fotorrealistaImages].map((src, i) => (
                   <div
                     key={i}
                     className="min-w-[320px] max-w-[400px] bg-card p-4 rounded-lg shadow-lg border border-primary/20 flex-shrink-0"
                   >
-                    <iframe
-                      title={model.title}
-                      frameBorder="0"
-                      allowFullScreen
-                      allow="autoplay; fullscreen; xr-spatial-tracking"
-                      xr-spatial-tracking="true"
-                      execution-while-out-of-viewport="true"
-                      execution-while-not-rendered="true"
-                      web-share="true"
-                      src={model.modelUrl}
-                      className="w-full h-[300px] rounded-md"
-                    ></iframe>
-                    <p className="text-sm mt-2 text-muted-foreground font-rajdhani">
-                      <a href={model.pageUrl} target="_blank" rel="nofollow" className="font-bold text-primary">
-                        {model.title}
-                      </a>{" "}
-                      by{" "}
-                      <a href={model.authorUrl} target="_blank" rel="nofollow" className="font-bold text-primary">
-                        {model.author}
-                      </a>{" "}
-                      on{" "}
-                      <a href="https://sketchfab.com" target="_blank" rel="nofollow" className="font-bold text-primary">
-                        Sketchfab
-                      </a>
-                    </p>
+                    <img
+                      src={src}
+                      alt={`Render ${i + 1}`}
+                      className="w-full h-[300px] object-cover rounded-md"
+                    />
                   </div>
                 ))}
               </div>
